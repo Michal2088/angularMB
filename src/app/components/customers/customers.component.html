@@ -1,0 +1,99 @@
+<div class="alert alert-secondary mt-5" role="alert">
+  <h3 class="fw-bolder"><i class="fa-solid fa-user"></i> Customers</h3>
+</div>
+
+<div class="d-flex flex-wrap my-5">
+  <div class="input-group flex-nowrap w-25 m-1">
+    <span class="input-group-text"
+      ><i class="fa-brands fa-searchengin"></i
+    ></span>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="first name"
+      [(ngModel)]="customFirstName"
+    />
+  </div>
+  <div class="input-group flex-nowrap w-25 m-1">
+    <span class="input-group-text"
+      ><i class="fa-brands fa-searchengin"></i></span>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="last name"
+      [(ngModel)]="customLastName"
+    />
+  </div>
+  <div class="input-group flex-nowrap w-25 m-1">
+    <span class="input-group-text"
+      ><i class="fa-brands fa-searchengin"></i></span>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="phone"
+      [(ngModel)]="customPhone"
+    />
+  </div>
+ 
+  <button type="button" class="btn btn-success ms-2" (click)="addCustomer()">
+    <i class="fa-sharp fa-solid fa-plus"></i> Add Customers
+  </button>
+</div>
+
+<div
+  *ngIf="
+    customers
+      | filter: 'firstName':customFirstName
+      | filter: 'lastName':customLastName
+      | filter: 'phone':customPhone as customers
+  "
+>
+  <ng-container *ngIf="customers.length != 0; else noFound">
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Email</th>
+          <th scope="col">Address</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+          <th scope="col">show</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ customer.firstName }}</td>
+          <td>{{ customer.lastName }}</td>
+          <td>{{ customer.phone }}</td>
+          <td>{{ customer.email }}</td>
+          <td>{{ customer.address }}</td>
+          <td>
+            <i
+              class="fa-solid fa-pen-to-square text-success"
+              (click)="updateCustomer(customer)"
+            ></i>
+          </td>
+          <td>
+            <i
+              class="fa-solid fa-trash text-danger"
+              (click)="deleteCustomer(customer)"
+            ></i>
+          </td>
+          <td>
+            <i
+              class="fa-sharp fa-solid fa-eye"
+              (click)="showCustomer(customer.id)"
+            ></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ng-container>
+  <ng-template #noFound class="m-5">
+    <h5>no customers found...</h5>
+  </ng-template>
+</div>

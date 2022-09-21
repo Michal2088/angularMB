@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angularmb-76d18": {
+      "hosting": {
+        "angularMB": [
+          "angularmb-76d18"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angularmb-76d18"
+  }
+}

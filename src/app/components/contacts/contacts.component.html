@@ -1,0 +1,50 @@
+<div class="alert alert-secondary mt-5" role="alert">
+  <h3 class="fw-bolder"><i class="fa-solid fa-user"></i> Contacts</h3>
+</div>
+
+  <div>
+    <div class="input-group flex-nowrap w-50 my-5">
+      <span class="input-group-text"
+        ><i class="fa-brands fa-searchengin"></i
+      ></span>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search name"
+        [(ngModel)]="contactName"
+      />
+    </div>
+    <div *ngIf="contacts | filter: 'name':contactName as contacts">
+      <ng-container *ngIf="contacts.length != 0; else noFound">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">birthday</th>
+              <th scope="col">Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let contact of contacts; index as i">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ contact.name }}</td>
+              <td>{{ contact.email }}</td>
+              <td>{{ contact.birthday | date: "MM/dd/yy" }}</td>
+              <td>
+                <ul *ngIf="contact.phones?.length; else noPhones">
+                  <li *ngFor="let phone of contact.phones">{{ phone }}</li>
+                </ul>
+                <ng-template #noPhones> No phones </ng-template>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </ng-container>
+    </div>
+  </div>
+  <ng-template #noFound class="m-5">
+    <h5>no contacts found...</h5>
+  </ng-template>
+

@@ -1,0 +1,60 @@
+<div class="container my-5 mx-auto col-lg-4">
+    <h1 class="text-center">
+      COMPANY <i class="fa-brands fa-think-peaks text-success"></i> CRM
+    </h1>
+    <h4 class="text-center">Register here</h4>
+    <form #loginForm="ngForm" (ngSubmit)="submitRegister()">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          [(ngModel)]="user.email"
+          #email="ngModel"
+          required
+          name="email"
+          minlength="10"
+          email
+        />
+      </div>
+      <div *ngIf="email.invalid && (email.dirty || email.touched)">
+        <small *ngIf="email.errors?.['required']" style="color: red">Email is required.</small>
+        <small *ngIf="email.errors?.['minlength']" style="color: red">
+          Email must be at least 10 characters long.
+        </small>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          [(ngModel)]="user.password"
+          #password="ngModel"
+          required
+          name="password"
+          minlength="8"
+        />
+      </div>
+      <div *ngIf="password.invalid && (password.dirty || password.touched)">
+        <small *ngIf="password.errors?.['minlength']" style="color: red">
+          Password must be at least 10 characters long.
+        </small>
+        <small *ngIf="password.errors?.['required']" style="color: red">
+          Password is required.
+        </small>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-success mt-3 w-100"
+        [disabled]="loginForm.invalid"
+      >
+        register
+      </button>
+    </form>
+    <p class="text-center mt-3">
+      <a routerLink="/login">Already have user?click here</a>
+    </p>
+  </div>
+  

@@ -1,0 +1,9 @@
+.divImg {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+.imgSize {
+    margin-top: 2%;
+  width: 80%;
+}
