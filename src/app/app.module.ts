@@ -21,6 +21,7 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { PNFComponent } from './components/pnf/pnf.component';
 import { RegisterComponent } from './components/register/register.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { NavbarLgComponent } from './components/navbar-lg/navbar-lg.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FooterComponent } from './components/footer/footer.component';
     FilterPipe,
     PNFComponent,
     RegisterComponent,
-    FooterComponent
+    FooterComponent,
+    NavbarLgComponent
   ],
   imports: [
     BrowserModule,

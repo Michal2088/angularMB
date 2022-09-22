@@ -1,0 +1,9 @@
+.cursor{
+    cursor: pointer;
+}
+.borderB{
+    border-bottom:3px solid green;
+}
+.activeMY{
+    font-weight: 900;
+}

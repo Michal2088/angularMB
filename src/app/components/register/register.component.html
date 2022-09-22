@@ -1,4 +1,4 @@
-<div class="container my-5 mx-auto col-lg-4">
+<div class="container margTop mx-auto col-lg-4">
     <h1 class="text-center">
       COMPANY <i class="fa-brands fa-think-peaks text-success"></i> CRM
     </h1>
@@ -14,14 +14,14 @@
           #email="ngModel"
           required
           name="email"
-          minlength="10"
+          minlength="6"
           email
         />
       </div>
       <div *ngIf="email.invalid && (email.dirty || email.touched)">
         <small *ngIf="email.errors?.['required']" style="color: red">Email is required.</small>
         <small *ngIf="email.errors?.['minlength']" style="color: red">
-          Email must be at least 10 characters long.
+          Email must be at least 6 characters long.
         </small>
       </div>
       <div class="form-group">
@@ -39,7 +39,7 @@
       </div>
       <div *ngIf="password.invalid && (password.dirty || password.touched)">
         <small *ngIf="password.errors?.['minlength']" style="color: red">
-          Password must be at least 10 characters long.
+          Password must be at least 8 characters long.
         </small>
         <small *ngIf="password.errors?.['required']" style="color: red">
           Password is required.

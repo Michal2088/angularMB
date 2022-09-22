@@ -1,10 +1,10 @@
 <div class="alert alert-secondary mt-5" role="alert">
   <h3 class="fw-bolder"><i class="fa-solid fa-user"></i> Customers</h3>
 </div>
-
-<div class="d-flex flex-wrap my-5">
+<!-- <div class="d-none d-lg-block"> -->
+<div class="d-flex justify-content-center flex-wrap">
   <div class="input-group flex-nowrap w-25 m-1">
-    <span class="input-group-text"
+    <span class="input-group-text d-none d-lg-block"
       ><i class="fa-brands fa-searchengin"></i
     ></span>
     <input
@@ -15,8 +15,9 @@
     />
   </div>
   <div class="input-group flex-nowrap w-25 m-1">
-    <span class="input-group-text"
-      ><i class="fa-brands fa-searchengin"></i></span>
+    <span class="input-group-text d-none d-lg-block"
+      ><i class="fa-brands fa-searchengin"></i
+    ></span>
     <input
       type="text"
       class="form-control"
@@ -25,8 +26,9 @@
     />
   </div>
   <div class="input-group flex-nowrap w-25 m-1">
-    <span class="input-group-text"
-      ><i class="fa-brands fa-searchengin"></i></span>
+    <span class="input-group-text d-none d-lg-block"
+      ><i class="fa-brands fa-searchengin"></i
+    ></span>
     <input
       type="text"
       class="form-control"
@@ -34,8 +36,8 @@
       [(ngModel)]="customPhone"
     />
   </div>
- 
-  <button type="button" class="btn btn-success ms-2" (click)="addCustomer()">
+
+  <button type="button" class="btn btn-success m-2" (click)="addCustomer()">
     <i class="fa-sharp fa-solid fa-plus"></i> Add Customers
   </button>
 </div>
@@ -49,7 +51,7 @@
   "
 >
   <ng-container *ngIf="customers.length != 0; else noFound">
-    <table class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped d-none d-lg-table mt-3">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -92,6 +94,36 @@
         </tr>
       </tbody>
     </table>
+    <div class="d-lg-none">
+      <div class="d-flex justify-content-center flex-wrap">
+        <div
+          *ngFor="let customer of customers"
+          class="card m-2"
+          style="width: 18rem"
+        >
+          <div class="card-body">
+            <h5 class="card-title text-success">
+              {{ customer.firstName }} {{ customer.lastName }}
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted">email:{{ customer.email }}</h6>
+            <p class="card-text">address:{{ customer.address }}</p>
+            <p class="card-text">phone:{{ customer.phone }}</p>
+            <i
+            class="fa-solid fa-pen-to-square text-success mx-2"
+            (click)="updateCustomer(customer)"
+          ></i>
+          <i
+          class="fa-solid fa-trash text-danger mx-2"
+          (click)="deleteCustomer(customer)"
+        ></i>
+        <i
+        class="fa-sharp fa-solid fa-eye mx-2"
+        (click)="showCustomer(customer.id)"
+      ></i>
+          </div>
+        </div>
+      </div>
+    </div>
   </ng-container>
   <ng-template #noFound class="m-5">
     <h5>no customers found...</h5>
