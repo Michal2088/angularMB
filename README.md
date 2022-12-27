@@ -1,6 +1,8 @@
 # AngularMB
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.
+You can see the site at this link:
+https://angularmb-76d18.web.app
 
 ## Development server
 
